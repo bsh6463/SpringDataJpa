@@ -76,4 +76,17 @@ class MemberRepositoryTest {
 
     }
 
+    @Test
+    public void testQuery(){
+        Member member1 = new Member("aaa", 10);
+        Member member2 = new Member("bbb", 20);
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        List<Member> result = memberRepository.findUser("aaa", 10);
+        Assertions.assertThat(result.get(0).getUserName()).isEqualTo("aaa");
+        Assertions.assertThat(result.get(0).getAge()).isEqualTo(10);
+
+    }
+
 }

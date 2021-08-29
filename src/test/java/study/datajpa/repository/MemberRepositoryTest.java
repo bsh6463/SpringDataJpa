@@ -124,4 +124,26 @@ class MemberRepositoryTest {
             System.out.println("member = " + member);
         }
     }
+
+    @Test
+    public void returnType(){
+        Member member1 = new Member("aaa", 10);
+        Member member2 = new Member("bbb", 20);
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        List<Member> members = memberRepository.findListByUserName("aaa");
+        Optional<Member> optionalMember = memberRepository.findOptionalByUserName("aaa");
+
+       // Member findMember = memberRepository.findMemberByUserName("cddddddd");
+        //System.out.println("findMember = " + findMember);
+
+        /**
+         * Collection을 조회하는데 결과가 없으면? 결과는 null이 아님!
+         * 빈 컬렉션을 반환한다. .size() = 0
+         */
+        List<Member> sdsdfsdf = memberRepository.findListByUserName("sdsdfsdf");
+        System.out.println("sdsdfsdf = " + sdsdfsdf);
+        System.out.println("sdsdfsdf.size() = " + sdsdfsdf.size());
+    }
 }
